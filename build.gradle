@@ -1,0 +1,31 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.0-SNAPSHOT'
+    }
+}
+
+apply plugin: 'forge'
+
+[ compileJava, compileTestJava ]*.options*.encoding = 'UTF-8'
+
+version = "1.6.4"
+group= "com.gamerforea" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "AuthReplacer"
+
+minecraft {
+	version = "1.6.4-9.11.1.964"
+}
+
+jar {
+    manifest {
+        attributes 'FMLCorePlugin': 'com.gamerforea.authreplacer.loader.CoreMod'
+        attributes 'FMLCorePluginContainsFMLMod': 'true'
+    }
+}
